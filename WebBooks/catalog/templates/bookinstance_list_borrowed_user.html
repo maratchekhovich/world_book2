@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Мои книги</h1>
+
+{% if bookinstance_list %}
+<ul>
+  {% for bookinst in bookinstance_list %}
+    <li>
+      {{ bookinst.book.title }} — {{ bookinst.due_back }}
+
+      {% if bookinst.is_overdue %}
+        <strong style="color:red;">(просрочено)</strong>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Нет заказанных книг.</p>
+{% endif %}
+
+{% endblock %}
